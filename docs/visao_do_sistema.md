@@ -1,4 +1,4 @@
-# Documento de Visão
+# Documento de Visão do Sistema
 
 ## NaPontaDoLapis (Sistema de Gereciamento de Despesas Pessoais)
 
@@ -21,6 +21,7 @@ O projeto __NaPontaDoLapis__ tem como objetivo proporcionar uma solução simple
 |:---  |:--- |:--- |
 | Chefe de Familia(Admin) | Realiza as atividades básicas para o início da operação do sistema, e gerencia as despesas gerais| Mantém os cadastros dos membros da familia; mantém categorias; mantém metodos de pagamento; registra suas despesas; limita gastos de outros membros; ver relatorio completo.  |
 | Membro da Familia | Realiza a gestão de suas despesas pessoais | Registra suas despesas; vê relatorio pessoal; consultar saldo dos metodos de pagamento.|
+| Visitante | Estado do usuario antes do login | Entra no sistema e cadastra-se no sistema.|
 
 ### 4. Requisitos Funcionais
 
@@ -34,7 +35,8 @@ O projeto __NaPontaDoLapis__ tem como objetivo proporcionar uma solução simple
 | RF06 | Consulta saldos dos metodos de pagamento | Tanto chefes quanto membros conseguem consultar o saldo dos metodos de pagamento  |
 | RF07 | Manter despesas | O Chefe e membros conseguem gerenciar as despesas pessoais |
 | RF08 | Consultar relatorio | O Chefe consegue ter acesso ao relatorio geral e individual de cada membro e membros conseguem ver relatorios pessoais |
-| RF09 | Sair do sistema | O Usuario desloga e vai para a tela de visitante novamente |
+| RF09 | Limitar saldo | O Chefe consegue limitar o saldo de um metodo de pagamento, para um membro |
+| RF10 | Sair do sistema | O Usuario desloga e vai para a tela de visitante novamente |
 
 
 
