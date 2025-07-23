@@ -89,7 +89,7 @@ class MetodoDePagamento:
         return{
             "id":self.id,
             "nome":self.nome,
-            "tipo":self.tipo,
+            "tipo":self.tipo.value,
             "saldo_total":self.saldo_total,
             "familia_id":self.familia_id,
             "saldo_atual":self.saldo_atual

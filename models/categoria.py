@@ -27,7 +27,7 @@ class Categoria:
     #====== Metódos ======
 
     def __repr__(self):
-        return f"Categoria(id='{self.id}, nome='{self.nome}')"
+        return f"Categoria(id='{self.id}', nome='{self.nome}')"
     
     def to_dict(self):
         return {"id":self.id, "nome":self.nome}

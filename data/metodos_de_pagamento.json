@@ -1,0 +1,18 @@
+[
+    {
+        "id": 0,
+        "nome": "Nubanko",
+        "tipo": "credito",
+        "saldo_total": 5.3,
+        "familia_id": 0,
+        "saldo_atual": 5.3
+    },
+    {
+        "id": 1,
+        "nome": "Nubanko",
+        "tipo": "credito",
+        "saldo_total": 5.3,
+        "familia_id": 0,
+        "saldo_atual": 5.3
+    }
+]
