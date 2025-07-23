@@ -90,7 +90,7 @@ class Usuario:
             "nome":self.nome,
             "email":self.email,
             "senha":self.senha,
-            "perfil":self.perfil,
+            "perfil":self.perfil.value,
             "familia_id":self.familia_id
         }
 

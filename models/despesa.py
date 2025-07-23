@@ -76,6 +76,15 @@ class Despesa:
             raise TypeError("O categoria_id deve ser um número inteiro")
         self.__categoria_id = categoria_id
     
+    @property
+    def data(self) -> datetime:
+        return self.__data 
+    @data.setter
+    def data(self,valor:datetime):
+        if not isinstance(valor, datetime):
+            raise TypeError("O valor da data deve ser um do tipo date")
+        self.__data = valor
+    
     #======= Métodos  ======
     def __repr__(self):
         return (f"Despesa(id='{self.id}', "
@@ -87,6 +96,7 @@ class Despesa:
                 f"data='{self.__data}")
     
     def to_dict(self):
+        data = self.data.strftime("%d/%m/%Y %H:%M:%S")
         return {
             "id":self.id,
             "descricao":self.descricao,
@@ -94,6 +104,6 @@ class Despesa:
             "usuario_id":self.usuario_id,
             "metodo_id":self.metodo_id,
             "categoria_id":self.categoria_id,
-            "data":self.__data
+            "data":data
         }
         
