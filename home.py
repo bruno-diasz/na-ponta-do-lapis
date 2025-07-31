@@ -3,7 +3,7 @@ from views import View, Perfil
 from templates.manter_usuarios_ui import ManterUsuarioUI 
 from templates.login_ui import LoginUI
 
-class IndexUI:
+class HomeUI:
 
     @staticmethod
     def menu_visitante():
@@ -47,7 +47,7 @@ class IndexUI:
         elif st.session_state.op == 3:
             pass
         elif st.session_state.op == 4:
-            IndexUI.logout()
+            HomeUI.logout()
 
 
     @staticmethod
@@ -75,16 +75,16 @@ class IndexUI:
         elif st.session_state.op == 4:
             pass
         elif st.session_state.op == 5:
-            IndexUI.logout()
+            HomeUI.logout()
 
     @staticmethod
     def sidebar():
         if "usr" not in st.session_state:
-            IndexUI.menu_visitante()
+            HomeUI.menu_visitante()
         elif st.session_state.usr.perfil == Perfil.ADMIN:
-            IndexUI.menu_admin()
+            HomeUI.menu_admin()
         elif st.session_state.usr.perfil == Perfil.MEMBRO:
-            IndexUI.menu_membro()
+            HomeUI.menu_membro()
         else:
             st.write(type(st.session_state.usr.perfil), st.session_state.usr.perfil)
 
@@ -95,13 +95,13 @@ class IndexUI:
         
     @staticmethod
     def main():
-        IndexUI.sidebar()
+        HomeUI.sidebar()
        
        
           
         
         
 
-IndexUI.main()
+HomeUI.main()
         
     

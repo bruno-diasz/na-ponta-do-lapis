@@ -140,8 +140,8 @@ class View:
 
     #=== Operações de métodos de pagamento ===
     @staticmethod
-    def metodo_pagamento_inserir(nome:str):
-        m = MetodoDePagamento(0, nome)
+    def metodo_pagamento_inserir(nome:str, tipo:str, saldo_total:float,familia_id:int):
+        m = MetodoDePagamento(0, nome,tipo,saldo_total,familia_id)
         MetodosDePagamento.inserir(m)
 
     @staticmethod
@@ -149,11 +149,11 @@ class View:
         return MetodosDePagamento.listar()
 
     @staticmethod
-    def metodo_pagamento_atualizar(id:str, nome:str):
+    def metodo_pagamento_atualizar(id:str, nome:str, tipo:str, saldo_total:float, familia_id:int):
         m = MetodosDePagamento.listar_id(id)
         if m is None:
             raise ValueError("id do metodo de pagamento não encontrado")
-        m_editado = MetodoDePagamento(id, nome)
+        m_editado = MetodoDePagamento(id, nome, tipo, saldo_total, familia_id)
         MetodosDePagamento.atualizar(m_editado)
 
     @staticmethod
