@@ -2,7 +2,7 @@
     {
         "id": 0,
         "nome": "Nubanko",
-        "tipo": "credito",
+        "tipo": "pix",
         "saldo_total": 1000.0,
         "familia_id": 0,
         "saldo_atual": 1000.0
@@ -30,5 +30,13 @@
         "saldo_total": 123.0,
         "familia_id": 0,
         "saldo_atual": 123.0
+    },
+    {
+        "id": 4,
+        "nome": "Sei",
+        "tipo": "pix",
+        "saldo_total": 0.01,
+        "familia_id": 0,
+        "saldo_atual": 0.01
     }
 ]

@@ -159,6 +159,13 @@ class View:
         m = MetodosDePagamento.listar_id(id)
         if m is None:
             raise ValueError("id do metodo de pagamento não encontrado")
+        
+        if tipo == 'Cartão de Débito': tipo = Tipo.DEBITO
+        elif tipo == 'Cartão de Crédito': tipo = Tipo.CREDITO
+        elif tipo == 'Pix': tipo = Tipo.PIX
+        elif tipo == 'Boleto': tipo = Tipo.BOLETO
+        elif tipo == 'Transferência': tipo = Tipo.TRANSFERENCIA
+        
         m_editado = MetodoDePagamento(id, nome, tipo, saldo_total, familia_id)
         MetodosDePagamento.atualizar(m_editado)
 
