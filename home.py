@@ -1,6 +1,7 @@
 import streamlit as st
 from views import View, Perfil
 from templates.manter_usuarios_ui import ManterUsuarioUI 
+from templates.manter_metodos_pagamentos_ui import ManterMetodosPagamentoUI
 from templates.login_ui import LoginUI
 
 class HomeUI:
@@ -34,19 +35,20 @@ class HomeUI:
             st.subheader(f"E aí, :red[{st.session_state.usr.nome.split()[0]}]! Bem-vindo(a) de volta! ")
             st.write('---')
 
-            if st.button('**:material/receipt: Cadastrar despesas**',use_container_width=True): st.session_state.op = 1
-            if st.button('**:material/receipt: Minhas despesas**',use_container_width=True): st.session_state.op = 2
-            if st.button('**:material/receipt: Relatório de despesas**',use_container_width=True): st.session_state.op = 3
+            if st.button('**:material/receipt: Minhas Despesas**',use_container_width=True): st.session_state.op = 1
+            if st.button('**:material/receipt: Metodos de Pagamento**',use_container_width=True): st.session_state.op = 2
+            if st.button('**:material/receipt: Grupo Familiar**',use_container_width=True): st.session_state.op = 3
+            if st.button('**:material/receipt: Relatório de Despesas**',use_container_width=True): st.session_state.op = 4
             st.divider()
-            if st.button('**:material/logout: Sair da Conta**',use_container_width=True): st.session_state.op = 4
+            if st.button('**:material/logout: Sair da Conta**',use_container_width=True): st.session_state.op = 5
 
         if st.session_state.op == 1:
             pass
         elif st.session_state.op == 2:
-            pass
+            ManterMetodosPagamentoUI.main()
         elif st.session_state.op == 3:
             pass
-        elif st.session_state.op == 4:
+        elif st.session_state.op == 5:
             HomeUI.logout()
 
 
@@ -85,8 +87,7 @@ class HomeUI:
             HomeUI.menu_admin()
         elif st.session_state.usr.perfil == Perfil.MEMBRO:
             HomeUI.menu_membro()
-        else:
-            st.write(type(st.session_state.usr.perfil), st.session_state.usr.perfil)
+        
 
     @staticmethod
     def logout():

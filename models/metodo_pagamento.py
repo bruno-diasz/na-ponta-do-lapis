@@ -3,6 +3,9 @@ from enum import Enum
 class Tipo(Enum):
     DEBITO = 'debito'
     CREDITO = 'credito'
+    PIX = 'pix'
+    BOLETO = 'boleto'
+    TRANSFERENCIA = 'transferencia'
 
 class MetodoDePagamento:
     def __init__(self, id:int, nome:str, tipo, saldo_total:float, familia_id:int):
@@ -52,7 +55,7 @@ class MetodoDePagamento:
             raise TypeError("O saldo total deve ser um número")
         if saldo_total <= 0:
             raise ValueError("O valor do saldo total deve ser maior do que 0")
-        self.__saldo_total = saldo_total
+        self.__saldo_total = round(saldo_total, 2)
 
     @property
     def saldo_atual(self):
@@ -63,8 +66,8 @@ class MetodoDePagamento:
             raise TypeError("O saldo atual deve ser um número")
         if saldo_atual < 0:
             raise ValueError("O valor do saldo atual deve ser positivo")
-        self.__saldo_atual = saldo_atual
-    
+        self.__saldo_atual = round(saldo_atual, 2)
+
     @property
     def familia_id(self):
         return self.__familia_id

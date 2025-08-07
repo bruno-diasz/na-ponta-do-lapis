@@ -9,6 +9,7 @@ class MetodosDePagamento(CRUD):
     @classmethod
     def abrir(cls):
         try:
+            cls.objetos.clear()
             with open("data/metodos_de_pagamento.json", mode="r") as arquivo:
                 metodos_json = json.load(arquivo)
                 for obj in metodos_json:

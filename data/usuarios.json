@@ -6,5 +6,21 @@
         "senha": "1234",
         "perfil": "membro",
         "familia_id": 0
+    },
+    {
+        "id": 0,
+        "nome": "Dfsdf",
+        "email": "@",
+        "senha": "1234",
+        "perfil": "membro",
+        "familia_id": 0
+    },
+    {
+        "id": 1,
+        "nome": "Teste",
+        "email": "teste@",
+        "senha": "1234",
+        "perfil": "membro",
+        "familia_id": 0
     }
 ]

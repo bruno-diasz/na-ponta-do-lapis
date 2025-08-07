@@ -1,7 +1,7 @@
 from dao.categorias import Categorias, Categoria
 from dao.despesas import Despesas, Despesa
 from dao.familias import Familias, Familia
-from dao.metodos_de_pagamento import MetodosDePagamento, MetodoDePagamento
+from dao.metodos_de_pagamento import MetodosDePagamento, MetodoDePagamento, Tipo
 from dao.usuarios import Usuarios, Usuario, Perfil
 
 class View:
@@ -141,6 +141,12 @@ class View:
     #=== Operações de métodos de pagamento ===
     @staticmethod
     def metodo_pagamento_inserir(nome:str, tipo:str, saldo_total:float,familia_id:int):
+        if tipo == 'Cartão de Débito': tipo = Tipo.DEBITO
+        elif tipo == 'Cartão de Crédito': tipo = Tipo.CREDITO
+        elif tipo == 'Pix': tipo = Tipo.PIX
+        elif tipo == 'Boleto': tipo = Tipo.BOLETO
+        elif tipo == 'Transferência': tipo = Tipo.TRANSFERENCIA
+
         m = MetodoDePagamento(0, nome,tipo,saldo_total,familia_id)
         MetodosDePagamento.inserir(m)
 
