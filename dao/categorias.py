@@ -8,6 +8,7 @@ class Categorias(CRUD):
     @classmethod
     def abrir(cls):
         try:
+            cls.objetos.clear()
             with open("data/categorias.json", mode="r") as arquivo:
                 categorias_json = json.load(arquivo)
                 for obj in categorias_json:

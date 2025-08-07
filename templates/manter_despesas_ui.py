@@ -31,8 +31,8 @@ class ManterDespesasUI:
             dic = []
             for obj in despesas:
                 dic.append(obj.to_dict())
-            df = pd.DataFrame(dic, columns=['id', 'nome', 'valor', 'usuario', 'metodo_pagamento', 'categoria'])
-            st.dataframe(df, hide_index=True, column_config={"id": "ID", "nome": "Nome", "valor": "Valor (R$)", "usuario": "Usuário", "metodo_pagamento": "Método de Pagamento", "categoria": "Categoria"})
+            df = pd.DataFrame(dic, columns=['id', 'descricao', 'valor', 'metodo_id', 'categoria_id', 'data'])
+            st.dataframe(df, hide_index=True, column_config={"id": "ID", "descricao": "Descrição", "valor": "Valor (R$)", "metodo_id": "Método de Pagamento", "categoria_id": "Categoria", "data": "Data"})
 
     @staticmethod
     def inserir():
@@ -44,15 +44,14 @@ class ManterDespesasUI:
             with st.container(border=True):
                 colun1, colun2 = st.columns([2, 1])
 
-                nome = colun1.text_input("Nome da Despesa: ", placeholder='Digite o Nome da Despesa aqui')
+                descricao = colun1.text_input("Descrição: ", placeholder='Digite a Descrição da Despesa aqui')
                 valor = colun1.number_input("Valor (R$): ", min_value=0.0, step=0.01, format="%.2f")
-                usuario = colun1.text_input("Usuário: ", placeholder='Digite o Nome do Usuário aqui')
                 metodo_pagamento = colun1.selectbox("Método de Pagamento: ", ['Cartão de Crédito', 'Cartão de Débito', 'Pix', 'Boleto', 'Transferência'])
-                categoria = colun1.text_input("Categoria: ", placeholder='Digite a Categoria aqui')
+                categoria = colun1.selectbox("Categoria: ", ['Alimentação', 'Transporte', 'Saúde', 'Lazer', 'Educação', 'Outros'])
 
                 st.write('---')
                 if st.button("Cadastrar", type='primary'):
-                    View.despesa_inserir(nome, valor, usuario, metodo_pagamento, categoria)
+                    View.despesa_inserir(descricao, valor, categoria, st.session_state.usuario.id, metodo_pagamento)
                     st.success("Cadastro realizado com sucesso.", icon=':material/check: ')
                     time.sleep(4)
                     st.rerun()

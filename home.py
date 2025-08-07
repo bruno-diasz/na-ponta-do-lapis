@@ -3,6 +3,7 @@ from views import View, Perfil
 from templates.manter_usuarios_ui import ManterUsuarioUI 
 from templates.manter_metodos_pagamentos_ui import ManterMetodosPagamentoUI
 from templates.manter_despesas_ui import ManterDespesasUI
+from templates.manter_categoria_ui import ManterCategoriaUI
 from templates.login_ui import LoginUI
 
 class HomeUI:
@@ -37,18 +38,19 @@ class HomeUI:
             st.write('---')
 
             if st.button('**:material/receipt: Minhas Despesas**',use_container_width=True): st.session_state.op = 1
-            if st.button('**:material/payment: Metodos de Pagamento**',use_container_width=True): st.session_state.op = 2
-            if st.button('**:material/group: Grupo Familiar**',use_container_width=True): st.session_state.op = 3
-            if st.button('**:material/report: Relatório de Despesas**',use_container_width=True): st.session_state.op = 4
+            if st.button('**:material/payment: Categorias de Despesas**',use_container_width=True): st.session_state.op = 2
+            if st.button('**:material/payment: Metodos de Pagamento**',use_container_width=True): st.session_state.op = 3
+            if st.button('**:material/group: Grupo Familiar**',use_container_width=True): st.session_state.op = 4
+            if st.button('**:material/report: Relatório de Despesas**',use_container_width=True): st.session_state.op = 5
             st.divider()
-            if st.button('**:material/logout: Sair da Conta**',use_container_width=True): st.session_state.op = 5
+            if st.button('**:material/logout: Sair da Conta**',use_container_width=True): st.session_state.op = 6
 
         if st.session_state.op == 1:
             ManterDespesasUI.main()
         elif st.session_state.op == 2:
-            ManterMetodosPagamentoUI.main()
+            ManterCategoriaUI.main()
         elif st.session_state.op == 3:
-            pass
+            ManterMetodosPagamentoUI.main()
         elif st.session_state.op == 5:
             HomeUI.logout()
 

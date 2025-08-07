@@ -9,6 +9,7 @@ class Usuarios(CRUD):
     @classmethod
     def abrir(cls):
         try:
+            cls.objetos.clear()
             with open("data/usuarios.json", mode="r") as arquivo:
                 usuarios_json = json.load(arquivo)
                 for obj in usuarios_json:

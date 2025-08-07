@@ -55,7 +55,7 @@ class View:
     
     #=== Operações de despesas ===
     @staticmethod
-    def despesa_inserir(nome:str, valor:float, categoria_id:int, usuario_id:int, metodo_pagamento_id:int):
+    def despesa_inserir(descricao:str, valor:float, categoria_id:int, usuario_id:int, metodo_pagamento_id:int):
         c = Categorias.listar_id(categoria_id)
         if c is None:
             raise ValueError("id da categoria não encontrado")
@@ -66,7 +66,7 @@ class View:
         if m is None:
             raise ValueError("id do metodo de pagamento não encontrado")
 
-        d = Despesa(0, nome, valor, u, m, c)
+        d = Despesa(0, descricao, valor, u, m, c)
         Despesas.inserir(d)
     
     @staticmethod
