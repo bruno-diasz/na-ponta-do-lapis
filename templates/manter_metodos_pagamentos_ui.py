@@ -105,3 +105,4 @@ class ManterMetodosPagamentoUI:
                 st.success("Método de pagamento excluído com sucesso.")
                 time.sleep(4)
                 st.rerun()
+        

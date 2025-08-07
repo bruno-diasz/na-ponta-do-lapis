@@ -10,6 +10,7 @@ class Despesas(CRUD):
     @classmethod
     def abrir(cls):
         try:
+            cls.objetos.clear()
             with open("data/despesas.json", mode="r") as arquivo:
                 despesas_json = json.load(arquivo)
                 for obj in despesas_json:

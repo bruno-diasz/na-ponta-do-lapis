@@ -7,6 +7,7 @@ class Familias(CRUD):
 
     @classmethod
     def abrir(cls):
+        cls.objetos.clear()
         try:
             with open("data/familias.json", mode="r") as arquivo:
                 familias_json = json.load(arquivo)

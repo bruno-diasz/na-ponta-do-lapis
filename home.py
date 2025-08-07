@@ -2,6 +2,7 @@ import streamlit as st
 from views import View, Perfil
 from templates.manter_usuarios_ui import ManterUsuarioUI 
 from templates.manter_metodos_pagamentos_ui import ManterMetodosPagamentoUI
+from templates.manter_despesas_ui import ManterDespesasUI
 from templates.login_ui import LoginUI
 
 class HomeUI:
@@ -37,13 +38,13 @@ class HomeUI:
 
             if st.button('**:material/receipt: Minhas Despesas**',use_container_width=True): st.session_state.op = 1
             if st.button('**:material/payment: Metodos de Pagamento**',use_container_width=True): st.session_state.op = 2
-            if st.button('**:material/receipt: Grupo Familiar**',use_container_width=True): st.session_state.op = 3
-            if st.button('**:material/receipt: Relatório de Despesas**',use_container_width=True): st.session_state.op = 4
+            if st.button('**:material/group: Grupo Familiar**',use_container_width=True): st.session_state.op = 3
+            if st.button('**:material/report: Relatório de Despesas**',use_container_width=True): st.session_state.op = 4
             st.divider()
             if st.button('**:material/logout: Sair da Conta**',use_container_width=True): st.session_state.op = 5
 
         if st.session_state.op == 1:
-            pass
+            ManterDespesasUI.main()
         elif st.session_state.op == 2:
             ManterMetodosPagamentoUI.main()
         elif st.session_state.op == 3:
@@ -83,11 +84,11 @@ class HomeUI:
     def sidebar():
         if "usr" not in st.session_state:
             HomeUI.menu_visitante()
-        elif st.session_state.usr.perfil == Perfil.ADMIN:
+        elif st.session_state.usr.perfil.value == Perfil.ADMIN.value:
             HomeUI.menu_admin()
-        elif st.session_state.usr.perfil == Perfil.MEMBRO:
+        elif st.session_state.usr.perfil.value == Perfil.MEMBRO.value:
             HomeUI.menu_membro()
-        
+     
 
     @staticmethod
     def logout():
