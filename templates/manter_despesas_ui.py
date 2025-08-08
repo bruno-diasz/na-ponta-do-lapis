@@ -43,20 +43,23 @@ class ManterDespesasUI:
         try:
             with st.container(border=True):
                 colun1, colun2 = st.columns([2, 1])
+                m = View.metodo_pagamento_listar()
+                c = View.categoria_listar()
 
                 descricao = colun1.text_input("Descrição: ", placeholder='Digite a Descrição da Despesa aqui')
                 valor = colun1.number_input("Valor (R$): ", min_value=0.0, step=0.01, format="%.2f")
-                metodo_pagamento = colun1.selectbox("Método de Pagamento: ", ['Cartão de Crédito', 'Cartão de Débito', 'Pix', 'Boleto', 'Transferência'])
-                categoria = colun1.selectbox("Categoria: ", ['Alimentação', 'Transporte', 'Saúde', 'Lazer', 'Educação', 'Outros'])
+                metodo_pagamento = colun1.selectbox("Método de Pagamento: ", m, format_func=lambda metodo: metodo.nome)
+                categoria = colun1.selectbox("Categoria: ", c, format_func=lambda categoria: categoria.nome)
 
                 st.write('---')
                 if st.button("Cadastrar", type='primary'):
-                    View.despesa_inserir(descricao, valor, categoria, st.session_state.usuario.id, metodo_pagamento)
+                    View.despesa_inserir(descricao, valor, categoria.id, st.session_state.usr.id, metodo_pagamento.id)
                     st.success("Cadastro realizado com sucesso.", icon=':material/check: ')
                     time.sleep(4)
                     st.rerun()
         except Exception as erro:
             st.error(f"Erro ao cadastrar a despesa: {erro}")
+
     @staticmethod
     def atualizar():
         st.subheader(":material/edit: Edição:")
@@ -64,22 +67,24 @@ class ManterDespesasUI:
         colun1.divider()
 
         despesas = View.despesa_listar()
-        despesa = st.selectbox("Selecione uma Despesa para Edição:", despesas, format_func=lambda despesa: f'{despesa.id}. {despesa.nome}')
+        metodo = View.metodo_pagamento_listar()
+        categoria = View.categoria_listar()
+        despesa = st.selectbox("Selecione uma Despesa para Edição:", despesas, format_func=lambda despesa: f'{despesa.id}. {despesa.descricao}')
         if despesa:
             with st.container(border=True):
                 colun1, colun2 = st.columns([2, 1])
-                novo_nome = colun1.text_input("Novo Nome:", value=despesa.nome)
+                nova_descricao = colun1.text_input("Nova Descrição:", value=despesa.descricao)
                 novo_valor = colun1.number_input("Novo Valor (R$):", value=despesa.valor, min_value=0.0, step=0.01, format="%.2f")
-                novo_usuario = colun1.text_input("Novo Usuário:", value=despesa.usuario)
-                novo_metodo_pagamento = colun1.selectbox("Novo Método de Pagamento:", ['Cartão de Crédito', 'Cartão de Débito', 'Pix', 'Boleto', 'Transferência'], index=['Cartão de Crédito', 'Cartão de Débito', 'Pix', 'Boleto', 'Transferência'].index(despesa.metodo_pagamento))
-                nova_categoria = colun1.text_input("Nova Categoria:", value=despesa.categoria)
+                novo_metodo_pagamento = colun1.selectbox("Novo Método de Pagamento:", metodo, index=[m.id for m in metodo].index(despesa.metodo_id), format_func=lambda metodo: metodo.nome)
+                nova_categoria = colun1.selectbox("Nova Categoria:", categoria, index=[c.id for c in categoria].index(despesa.categoria_id), format_func=lambda categoria: categoria.nome)
 
                 st.write('---')
                 if st.button("Atualizar", type='primary'):
-                    View.despesa_atualizar(despesa.id, novo_nome, novo_valor, novo_usuario, novo_metodo_pagamento, nova_categoria)
+                    View.despesa_atualizar(despesa.id, nova_descricao, novo_valor, nova_categoria.id, despesa.usuario_id, novo_metodo_pagamento.id)
                     st.success("Edição realizada com sucesso.", icon=':material/check: ')
                     time.sleep(4)
-                    st.rerun() 
+                    st.rerun()
+
     @staticmethod
     def excluir():
         st.subheader(":material/remove: Exclusão:")
@@ -87,10 +92,11 @@ class ManterDespesasUI:
         colun1.divider()
 
         despesas = View.despesa_listar()
-        despesa = st.selectbox("Selecione uma Despesa para Exclusão:", despesas, format_func=lambda despesa: f'{despesa.id}. {despesa.nome}')
+        despesa = st.selectbox("Selecione uma Despesa para Exclusão:", despesas, format_func=lambda despesa: f'{despesa.id}. {despesa.descricao}')
         if despesa:
-            with st.container(border=True):
+          
                 colun1, colun2 = st.columns([2, 1])
+                colun1.divider()
                 if st.button("Excluir", type='primary'):
                     View.despesa_excluir(despesa.id)
                     st.success("Despesa excluída com sucesso.")

@@ -38,7 +38,7 @@ class HomeUI:
             st.write('---')
 
             if st.button('**:material/receipt: Minhas Despesas**',use_container_width=True): st.session_state.op = 1
-            if st.button('**:material/payment: Categorias de Despesas**',use_container_width=True): st.session_state.op = 2
+            if st.button('**:material/category: Categorias**',use_container_width=True): st.session_state.op = 2
             if st.button('**:material/payment: Metodos de Pagamento**',use_container_width=True): st.session_state.op = 3
             if st.button('**:material/group: Grupo Familiar**',use_container_width=True): st.session_state.op = 4
             if st.button('**:material/report: Relatório de Despesas**',use_container_width=True): st.session_state.op = 5

@@ -43,9 +43,6 @@ class ManterCategoriaUI:
                 colun1, colun2 = st.columns([2, 1])
 
                 nome = colun1.text_input("Nome: ", placeholder='Digite o Nome da Categoria aqui')
-                if not nome:
-                    st.error("Nome é obrigatório.")
-                    return
 
                 st.write('---')
                 if st.button("Cadastrar", type='primary'):
@@ -63,22 +60,16 @@ class ManterCategoriaUI:
         colun1.divider()
 
         try:
+            c = View.categoria_listar()
+            categoria = st.selectbox("Selecione uma Categoria:", c, format_func=lambda categoria: categoria.nome)
             with st.container(border=True):
                 colun1, colun2 = st.columns([2, 1])
 
-                id_categoria = colun1.text_input("ID da Categoria: ", placeholder='Digite o ID da Categoria aqui')
-                if not id_categoria:
-                    st.error("ID é obrigatório.")
-                    return
-
-                nome = colun1.text_input("Nome: ", placeholder='Digite o Nome da Categoria aqui')
-                if not nome:
-                    st.error("Nome é obrigatório.")
-                    return
+                nome = colun1.text_input("Novo Nome: ", placeholder='Digite o Nome da Categoria aqui', value=categoria.nome)
 
                 st.write('---')
                 if st.button("Atualizar", type='primary'):
-                    View.categoria_atualizar(id_categoria, nome)
+                    View.categoria_atualizar(categoria.id, nome)
                     st.success("Atualização realizada com sucesso.", icon=':material/check: ')
                     time.sleep(4)
                     st.rerun()
@@ -92,32 +83,21 @@ class ManterCategoriaUI:
         colun1.divider()
 
         try:
-            with st.container(border=True):
-                colun1, colun2 = st.columns([2, 1])
+            colun1, colun2 = st.columns([2, 1])
+            c = View.categoria_listar()
+            categoria = st.selectbox("Selecione uma Categoria para Exclusão:", c, format_func=lambda categoria: categoria.nome)
+            st.write('---')
 
-                id_categoria = colun1.text_input("ID da Categoria: ", placeholder='Digite o ID da Categoria aqui')
-                if not id_categoria:
-                    st.error("ID é obrigatório.")
-                    return
+            if st.button("Excluir", type='primary'):
+                View.categoria_excluir(categoria.id)
+                st.success("Exclusão realizada com sucesso.", icon=':material/check: ')
+                time.sleep(4)
+                st.rerun()
 
-                st.write('---')
-                if st.button("Excluir", type='primary'):
-                    View.categoria_excluir(id_categoria)
-                    st.success("Exclusão realizada com sucesso.", icon=':material/check: ')
-                    time.sleep(4)
-                    st.rerun()
         except Exception as erro:
             st.error(f"Erro ao excluir a categoria: {erro}")
         except ValueError as ve:
             st.error(f"Erro: {ve}")
-        except Exception as e:
-            st.error(f"Erro inesperado: {e}")
-        else:
-            st.success("Categoria excluída com sucesso.", icon=':material/check: ')
-            time.sleep(4)
-            st.rerun()
-        finally:
-            st.write("Operação concluída.")
-            st.write("Você pode continuar gerenciando suas categorias.")
+       
 
     

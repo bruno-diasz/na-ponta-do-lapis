@@ -66,7 +66,7 @@ class View:
         if m is None:
             raise ValueError("id do metodo de pagamento não encontrado")
 
-        d = Despesa(0, descricao, valor, u, m, c)
+        d = Despesa(0, descricao, valor, usuario_id, metodo_pagamento_id, categoria_id)
         Despesas.inserir(d)
     
     @staticmethod
@@ -89,7 +89,7 @@ class View:
         if m is None:
             raise ValueError("id do metodo de pagamento não encontrado")
 
-        d_editada = Despesa(id, nome, valor, u, m, c)
+        d_editada = Despesa(id, nome, valor, usuario_id, metodo_pagamento_id, categoria_id)
         Despesas.atualizar(d_editada)
 
     @staticmethod
