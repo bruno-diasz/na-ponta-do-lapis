@@ -45,11 +45,8 @@ class ManterUsuarioUI:
                 nome = col1.text_input("Nome: ", placeholder='Digite seu Nome aqui')
                 email = col2.text_input("E-mail: ", placeholder='Digite seu E-mail aqui')
                 senha = col1.text_input("Senha: ", type='password', placeholder='Digite sua Senha aqui')
-                
-                if "usr" in st.session_state and st.session_state.usr.funcao == "admin":
-                    funcao = col2.selectbox("Função: ", ["cliente", "entregador", "admin"], format_func= lambda funcao : funcao.capitalize(), key="adc_func")
-                else:
-                    perfil = "membro"
+                senha2 = col2.text_input("Repita a Senha: ", type='password', placeholder='Repita sua Senha aqui')
+                perfil = "admin"
 
                 st.write('---')
                 if st.button("Cadastrar", type='primary'):

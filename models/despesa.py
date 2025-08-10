@@ -1,14 +1,14 @@
-from datetime import datetime
+from datetime import date
 
 class Despesa:
-    def __init__(self, id:int, descricao:str, valor:float, usuario_id:int, metodo_id:int, categoria_id:int):
+    def __init__(self, id:int, descricao:str, valor:float, usuario_id:int, metodo_id:int, categoria_id:int, data:date):
         self.id = id
         self.descricao = descricao
         self.valor = valor
         self.usuario_id = usuario_id
         self.metodo_id = metodo_id
         self.categoria_id = categoria_id
-        self.__data = datetime.now()
+        self.data = data
         
     #==== Getters e Setters =====
 
@@ -77,11 +77,11 @@ class Despesa:
         self.__categoria_id = categoria_id
     
     @property
-    def data(self) -> datetime:
+    def data(self) -> date:
         return self.__data 
     @data.setter
-    def data(self,valor:datetime):
-        if not isinstance(valor, datetime):
+    def data(self,valor:date):
+        if not isinstance(valor, date):
             raise TypeError("O valor da data deve ser um do tipo date")
         self.__data = valor
     
@@ -96,7 +96,7 @@ class Despesa:
                 f"data='{self.__data}")
     
     def to_dict(self):
-        data = self.data.strftime("%d/%m/%Y %H:%M:%S")
+        data = self.data.strftime("%d/%m/%Y")
         return {
             "id":self.id,
             "descricao":self.descricao,

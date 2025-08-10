@@ -19,8 +19,9 @@ class Despesas(CRUD):
                                 obj['valor'],
                                 obj['usuario_id'],
                                 obj['metodo_id'],
-                                obj['categoria_id'])
-                    x.data = datetime.strptime(obj["data"],"%d/%m/%Y %H:%M:%S") 
+                                obj['categoria_id'],
+                                datetime.strptime(obj["data"],"%d/%m/%Y"))
+                    
                     cls.objetos.append(x)
         except FileNotFoundError:
             pass

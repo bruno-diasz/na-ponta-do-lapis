@@ -5,7 +5,7 @@ class Perfil(Enum):
     MEMBRO = 'membro'
 
 class Usuario:
-    def __init__(self,id:int, nome:str, email:str, senha:str, perfil:Perfil, familia_id:int):
+    def __init__(self,id:int, nome:str, email:str, senha:str, perfil:Perfil, familia_id:int = None):
         self.id = id
         self.nome = nome
         self.email = email
@@ -68,10 +68,11 @@ class Usuario:
         return self.__familia_id
     @familia_id.setter
     def familia_id(self, familia_id):
-        if familia_id < 0 :
-            raise ValueError("O id deve ser um numero positivo")
-        if not isinstance(familia_id, int):
+        if not isinstance(familia_id, (int, type(None))):
             raise TypeError("O id deve ser um número inteiro")
+        if familia_id is not None:
+            if familia_id < 0:
+                raise ValueError("O id deve ser um numero positivo")
         self.__familia_id = familia_id
     
     #========== Metódos =================

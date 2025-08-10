@@ -1,11 +1,29 @@
 [
     {
         "id": 0,
-        "descricao": "Vamo La",
-        "valor": 0.09,
+        "descricao": "Queijo",
+        "valor": 7.99,
+        "usuario_id": 4,
+        "metodo_id": 0,
+        "categoria_id": 0,
+        "data": "05/08/2025"
+    },
+    {
+        "id": 1,
+        "descricao": "Teste",
+        "valor": 8.0,
+        "usuario_id": 4,
+        "metodo_id": 0,
+        "categoria_id": 0,
+        "data": "09/08/2025"
+    },
+    {
+        "id": 2,
+        "descricao": "Teste 44",
+        "valor": 9.0,
         "usuario_id": 0,
         "metodo_id": 0,
         "categoria_id": 0,
-        "data": "08/08/2025 14:51:46"
+        "data": "09/08/2025"
     }
 ]

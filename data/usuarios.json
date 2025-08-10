@@ -5,15 +5,15 @@
         "email": "@",
         "senha": "1234",
         "perfil": "membro",
-        "familia_id": 0
+        "familia_id": 2
     },
     {
-        "id": 0,
-        "nome": "Dfsdf",
-        "email": "@",
+        "id": 2,
+        "nome": "Semfamilia",
+        "email": "asd@",
         "senha": "1234",
         "perfil": "membro",
-        "familia_id": 0
+        "familia_id": 2
     },
     {
         "id": 1,
@@ -22,5 +22,21 @@
         "senha": "1234",
         "perfil": "membro",
         "familia_id": 0
+    },
+    {
+        "id": 3,
+        "nome": "Oi",
+        "email": "oi@",
+        "senha": "1234",
+        "perfil": "membro",
+        "familia_id": null
+    },
+    {
+        "id": 4,
+        "nome": "Bruno",
+        "email": "bruno@",
+        "senha": "1234",
+        "perfil": "admin",
+        "familia_id": 2
     }
 ]

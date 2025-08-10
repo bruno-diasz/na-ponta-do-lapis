@@ -2,5 +2,21 @@
     {
         "id": 0,
         "nome": "Simpsons"
+    },
+    {
+        "id": 1,
+        "nome": "Flinstons"
+    },
+    {
+        "id": 2,
+        "nome": "Adams"
+    },
+    {
+        "id": 3,
+        "nome": "Butitinha"
+    },
+    {
+        "id": 4,
+        "nome": "Jabas"
     }
 ]
