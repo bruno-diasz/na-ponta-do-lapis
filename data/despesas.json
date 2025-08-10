@@ -88,5 +88,14 @@
         "metodo_id": 1,
         "categoria_id": 1,
         "data": "10/08/2025"
+    },
+    {
+        "id": 10,
+        "descricao": "Sei La",
+        "valor": 8000.0,
+        "usuario_id": 4,
+        "metodo_id": 0,
+        "categoria_id": 0,
+        "data": "10/08/2025"
     }
 ]

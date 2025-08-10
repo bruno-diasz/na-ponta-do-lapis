@@ -90,26 +90,41 @@ class ManterFamiliaUI:
                 for membro in familia_membros:
                     with col1.expander(f"{membro.nome} "):
                         colun1, colun2 = st.columns(2)
-                        if membro.perfil.value == "admin":
-                            if colun1.button("Remover Admin", key=f"remover_admin_{membro.id}"):
-                                View.usuario_atualizar(membro.id, membro.nome, membro.email, membro.senha, "membro")
-                                if membro.id == st.session_state.usr.id:
-                                    st.session_state.usr = View.usuario_listar_id(membro.id)
-                                time.sleep(4)
-                                st.rerun()
+                        if st.session_state.usr.perfil.value == 'membro':
+                            colun1.write(f"**ID:** {membro.id}")
+                            colun2.write(f"**Perfil:** {membro.perfil.value}")
                         else:
-                            if colun1.button("Tornar Admin", key=f"tornar_admin_{membro.id}"):
-                                View.usuario_atualizar(membro.id, membro.nome, membro.email, membro.senha, "admin")
+                            
+                            colun1.write(f"**ID:** {membro.id}")
+                            colun2.write(f"**Perfil:** {membro.perfil.value}")
+                            if membro.perfil.value == "admin":
+                                if colun1.button("Remover Admin", key=f"remover_admin_{membro.id}"):
+                                    View.usuario_atualizar(membro.id, membro.nome, membro.email, membro.senha, "membro")
+                                    if membro.id == st.session_state.usr.id:
+                                        st.session_state.usr = View.usuario_listar_id(membro.id)
+                                    time.sleep(4)
+                                    st.rerun()
+                            else:
+                                if colun1.button("Tornar Admin", key=f"tornar_admin_{membro.id}"):
+                                    View.usuario_atualizar(membro.id, membro.nome, membro.email, membro.senha, "admin")
+                                    if membro.id == st.session_state.usr.id:
+                                        st.session_state.usr = View.usuario_listar_id(membro.id)
+                                    time.sleep(4)
+                                    st.rerun()
+                            if colun2.button("Remover da Família", key=f"remover_familia_{membro.id}"):
+                                View.familia_remover_usuario(membro.id)
                                 if membro.id == st.session_state.usr.id:
                                     st.session_state.usr = View.usuario_listar_id(membro.id)
                                 time.sleep(4)
                                 st.rerun()
-                        if colun2.button("Remover da Família", key=f"remover_familia_{membro.id}"):
-                            View.familia_remover_usuario(membro.id)
-                            if membro.id == st.session_state.usr.id:
-                                st.session_state.usr = View.usuario_listar_id(membro.id)
-                            time.sleep(4)
-                            st.rerun()
+                            
+                if st.session_state.usr.perfil.value == 'membro':
+                    st.divider()
+                    if st.button("Sair da Família", use_container_width=True):
+                        View.familia_remover_usuario(st.session_state.usr.id)
+                        st.session_state.usr = View.usuario_listar_id(st.session_state.usr.id)
+                        time.sleep(4)
+                        st.rerun()
         with despesas:
             st.subheader(":material/article: Listagem de Despesas da Familia:")
             if st.session_state.usr.perfil.value == 'membro':
