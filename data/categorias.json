@@ -2,5 +2,13 @@
     {
         "id": 0,
         "nome": "Sei Kla"
+    },
+    {
+        "id": 1,
+        "nome": "Transporte"
+    },
+    {
+        "id": 2,
+        "nome": "Saude"
     }
 ]

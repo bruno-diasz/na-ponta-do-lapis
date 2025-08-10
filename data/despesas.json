@@ -25,5 +25,68 @@
         "metodo_id": 0,
         "categoria_id": 0,
         "data": "09/08/2025"
+    },
+    {
+        "id": 3,
+        "descricao": "Feij\u00e3o Rosa",
+        "valor": 7.25,
+        "usuario_id": 0,
+        "metodo_id": 0,
+        "categoria_id": 0,
+        "data": "01/08/2025"
+    },
+    {
+        "id": 4,
+        "descricao": "Escolar",
+        "valor": 5.0,
+        "usuario_id": 0,
+        "metodo_id": 4,
+        "categoria_id": 1,
+        "data": "07/08/2025"
+    },
+    {
+        "id": 5,
+        "descricao": "Escolar",
+        "valor": 10.0,
+        "usuario_id": 0,
+        "metodo_id": 4,
+        "categoria_id": 1,
+        "data": "07/08/2025"
+    },
+    {
+        "id": 6,
+        "descricao": "Exame",
+        "valor": 7.0,
+        "usuario_id": 0,
+        "metodo_id": 1,
+        "categoria_id": 2,
+        "data": "07/08/2025"
+    },
+    {
+        "id": 7,
+        "descricao": "Teste",
+        "valor": 7.0,
+        "usuario_id": 0,
+        "metodo_id": 1,
+        "categoria_id": 2,
+        "data": "07/08/2025"
+    },
+    {
+        "id": 8,
+        "descricao": "Caro Dms",
+        "valor": 100.0,
+        "usuario_id": 0,
+        "metodo_id": 0,
+        "categoria_id": 1,
+        "data": "09/08/2025"
+    },
+    {
+        "id": 9,
+        "descricao": "Chop",
+        "valor": 50.0,
+        "usuario_id": 4,
+        "metodo_id": 1,
+        "categoria_id": 1,
+        "data": "10/08/2025"
     }
 ]

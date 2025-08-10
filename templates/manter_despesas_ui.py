@@ -28,12 +28,20 @@ class ManterDespesasUI:
         if len(despesas) == 0:
             st.write("Nenhuma despesa cadastrada")
         else:
-            dic = []
-            for obj in despesas:
-                dic.append(obj.to_dict())
-            df = pd.DataFrame(dic, columns=['id', 'descricao', 'valor', 'metodo_id', 'categoria_id', 'data'])
+            dic_despesa = [obj.to_dict() for obj in despesas]
+            dic_metodo = [obj.to_dict() for obj in View.metodo_pagamento_listar()]
+            dic_categoria = [obj.to_dict() for obj in View.categoria_listar()]
+
+            df_despesa = pd.DataFrame(dic_despesa, columns=['id', 'descricao', 'valor', 'metodo_id', 'categoria_id', 'data'])
+            df_metodo = pd.DataFrame(dic_metodo, columns=['id', 'nome'])
+            df_categoria = pd.DataFrame(dic_categoria, columns=['id', 'nome'])
+
+            df = pd.merge(df_despesa, df_metodo, left_on='metodo_id', right_on='id', suffixes=('', '_metodo'))
+            df = pd.merge(df, df_categoria, left_on='categoria_id', right_on='id', suffixes=('', '_categoria'))
+
+            df = df.drop(columns=['metodo_id', 'categoria_id', 'id_metodo', 'id_categoria'])
             df_formatado = df.style.format({"valor": "R$ {:.2f}"})
-            st.dataframe(df_formatado, hide_index=True, column_config={"id": "ID", "descricao": "Descrição", "valor": "Valor", "metodo_id": "Método de Pagamento", "categoria_id": "Categoria", "data": "Data"})
+            st.dataframe(df_formatado, hide_index=True, column_config={"id": "ID", "descricao": "Descrição", "valor": "Valor", "nome": "Método de Pagamento", "nome_categoria": "Categoria", "data": "Data"})
 
     @staticmethod
     def inserir():

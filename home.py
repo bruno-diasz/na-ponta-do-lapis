@@ -5,6 +5,7 @@ from templates.manter_metodos_pagamentos_ui import ManterMetodosPagamentoUI
 from templates.manter_despesas_ui import ManterDespesasUI
 from templates.manter_categoria_ui import ManterCategoriaUI
 from templates.manter_familia_ui import ManterFamiliaUI
+from templates.relatorio_ui import RelatorioUI
 from templates.login_ui import LoginUI
 
 class HomeUI:
@@ -49,8 +50,7 @@ class HomeUI:
         elif st.session_state.op == 2:
             ManterFamiliaUI.main()
         elif st.session_state.op == 3:
-            #ManterRelatorioUI.main()
-            pass
+            RelatorioUI.main()
         elif st.session_state.op == 6:
             HomeUI.logout()
 
@@ -80,6 +80,8 @@ class HomeUI:
             ManterMetodosPagamentoUI.main()
         elif st.session_state.op == 4:
             ManterFamiliaUI.main()
+        elif st.session_state.op == 5:
+            RelatorioUI.main()
         elif st.session_state.op == 6:
             HomeUI.logout()
 
